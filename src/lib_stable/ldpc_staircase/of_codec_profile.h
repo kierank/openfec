@@ -1,7 +1,7 @@
-/* $Id: of_codec_profile.h 67 2012-04-13 12:21:07Z detchart $ */
+/* $Id: of_codec_profile.h 175 2014-07-11 09:58:38Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
- * (c) Copyright 2009 - 2011 INRIA - All rights reserved
+ * (c) Copyright 2009 - 2012 INRIA - All rights reserved
  * Contact: vincent.roca@inria.fr
  *
  * This software is governed by the CeCILL license under French law and
@@ -45,8 +45,6 @@
 #define MEM_STATS
 #endif
 
-//#define ASSEMBLY_SSE_OPT
-
 /**
  * Define if you want to enable the use of the ML (Maximum Likelyhood) decoding.
  * If enabled, in practice decoding will start with IT decoding and end with ML
@@ -63,27 +61,6 @@
 
 #ifdef ML_DECODING
 #define OF_LDPC_STAIRCASE_ML_DECODING
-
-#endif
-
-//#define GENERATOR_MATRIX_ENCODING
-
-
-
-
-
-
-/**
- * This optimization is only significant in 32-bit architectures.
- * With LP64 architectures, padding will be needed, adding 32 more bits,
- * which makes this optimization useless...
- *
- * NB: not yet operational...
- */
-#if defined (__LP64__) || (__WORDSIZE == 64)
-// useless with 64-bit architectures
-#else
-
 #endif
 
 
@@ -113,10 +90,10 @@
  */
 #ifndef OF_LDPC_STAIRCASE_MAX_NB_SOURCE_SYMBOLS_DEFAULT
 #ifdef ML_DECODING
-#define OF_LDPC_STAIRCASE_MAX_NB_SOURCE_SYMBOLS_DEFAULT		40000
-#define OF_LDPC_STAIRCASE_MAX_NB_ENCODING_SYMBOLS_DEFAULT		40000
+#define OF_LDPC_STAIRCASE_MAX_NB_SOURCE_SYMBOLS_DEFAULT		20000
+#define OF_LDPC_STAIRCASE_MAX_NB_ENCODING_SYMBOLS_DEFAULT	20000
 #else
 #define OF_LDPC_STAIRCASE_MAX_NB_SOURCE_SYMBOLS_DEFAULT		100000
-#define OF_LDPC_STAIRCASE_MAX_NB_ENCODING_SYMBOLS_DEFAULT		100000
+#define OF_LDPC_STAIRCASE_MAX_NB_ENCODING_SYMBOLS_DEFAULT	100000
 #endif
 #endif

@@ -1,4 +1,4 @@
-/* $Id: of_rand.h 2 2011-03-02 11:01:37Z detchart $ */
+/* $Id: of_rand.h 186 2014-07-16 07:17:53Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
  * (c) Copyright 2009 - 2012 INRIA - All rights reserved
@@ -34,8 +34,6 @@
 #ifndef OF_RAND
 #define OF_RAND
 
-#include <stdio.h>
-#include "of_openfec_api.h"
 
 /**
  * \fn void		of_rfc5170_srand (UINT64 s)

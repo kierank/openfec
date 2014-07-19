@@ -1,4 +1,4 @@
-/* $Id: of_rand.c 2 2011-03-02 11:01:37Z detchart $ */
+/* $Id: of_rand.c 186 2014-07-16 07:17:53Z roca $ */
 //////////////////////////////////////////////////////////////////////////////
 //
 // rand31pmc
@@ -201,6 +201,8 @@
 //
 
 
+#include <stdio.h>
+#include "of_openfec_api.h"
 #include "of_rand.h"
 
 

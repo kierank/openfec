@@ -1,4 +1,4 @@
-/* $Id: of_openfec_api.h 72 2012-04-13 13:27:26Z detchart $ */
+/* $Id: of_openfec_api.h 189 2014-07-16 08:53:50Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
  * (c) Copyright 2009 - 2012 INRIA - All rights reserved
@@ -56,7 +56,7 @@
 #include "../lib_advanced/ldpc_from_file/of_ldpc_ff_api.h"
 #endif
 #include "of_debug.h"
-#include "of_rand.h"
+
 
 /****** OpenFEC.org general definitions ***********************************************************/
 
@@ -355,8 +355,8 @@ of_status_t	of_set_callback_functions (of_session_t	*ses,
  * @return			Error status.
  */
 of_status_t	of_build_repair_symbol (of_session_t*	ses,
-				    void* 		encoding_symbols_tab[],
-				    UINT32		esi_of_symbol_to_build);
+					void* 		encoding_symbols_tab[],
+					UINT32		esi_of_symbol_to_build);
 
 #endif /* OF_USE_ENCODER */
 
@@ -382,7 +382,7 @@ of_status_t	of_build_repair_symbol (of_session_t*	ses,
  * motivated by performance reasons since it means the codec does not need to keep any internal
  * copy of received symbols.
  *
- * @fn	  of_status_t	of_decode_with_new_symbol (of_session_t*	ses, void*	const	new_symbol_buf, UINT32		new_symbol_esi)
+ * @fn	  of_status_t	of_decode_with_new_symbol (of_session_t*	ses, void* const	new_symbol_buf, UINT32		new_symbol_esi)
  * @brief (try to) decode with a newly received symbol
  * @param ses			(IN) Pointer to the session.
  * @param new_symbol_buf	(IN) Pointer to the encoding symbol now available (i.e. a new
@@ -420,7 +420,7 @@ of_status_t	of_decode_with_new_symbol (of_session_t*	ses,
  * @return			Error status.
  */
 of_status_t	of_set_available_symbols (of_session_t*	ses,
-				      void* const	encoding_symbols_tab[]);
+					  void* const	encoding_symbols_tab[]);
 
 
 #if 0		/* NOT YET */

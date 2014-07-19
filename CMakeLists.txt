@@ -12,16 +12,15 @@ else(PROFILING STREQUAL "ON")
 endif(PROFILING STREQUAL "ON")
 
 if (DEBUG STREQUAL "ON")
-
+# Debug mode
 ADD_DEFINITIONS(-DOF_DEBUG)
 set(CMAKE_BUILD_TYPE Debug) 
 message(STATUS "Debug mode ON" )
 
 else(DEBUG STREQUAL "ON")
-
+# Release mode
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_C_FLAGS "-O4")
-#set(CMAKE_EXE_LINKER_FLAGS "-Os")
 message(STATUS "Debug mode OFF")
 
 endif (DEBUG STREQUAL "ON")
@@ -37,8 +36,6 @@ link_directories(${LIBRARY_OUTPUT_PATH})
 
 add_subdirectory(src)
 add_subdirectory(applis/eperftool)
+add_subdirectory(applis/howto_examples/simple_client_server)
 add_subdirectory(tools/descr_stats_v1.2)
 add_subdirectory(tests)
-
-install(DIRECTORY src/ DESTINATION include/openfec FILES_MATCHING PATTERN "*.h")
-install(FILES bin/Release/libopenfec.so DESTINATION lib)

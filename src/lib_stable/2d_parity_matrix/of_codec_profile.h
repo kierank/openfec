@@ -1,7 +1,7 @@
-/* $Id: of_codec_profile.h 2 2011-03-02 11:01:37Z detchart $ */
+/* $Id: of_codec_profile.h 175 2014-07-11 09:58:38Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
- * (c) Copyright 2009 - 2011 INRIA - All rights reserved
+ * (c) Copyright 2009 - 2012 INRIA - All rights reserved
  * Contact: vincent.roca@inria.fr
  *
  * This software is governed by the CeCILL-C license under French law and
@@ -44,8 +44,6 @@
 #define MEM_STATS
 #endif
 
-#define ASSEMBLY_SSE_OPT
-
 /**
  * Define if you want to enable the use of the ML (Maximum Likelyhood) decoding.
  * If enabled, in practice decoding will start with IT decoding and end with ML
@@ -63,7 +61,6 @@
 #ifdef ML_DECODING
 #define OF_2D_PARITY_ML_DECODING
 #endif
-
 
 
 /**

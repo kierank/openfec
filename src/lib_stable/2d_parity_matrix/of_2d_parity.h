@@ -1,7 +1,7 @@
-/* $Id: of_2d_parity.h 47 2011-06-08 14:09:17Z detchart $ */
+/* $Id: of_2d_parity.h 184 2014-07-15 09:42:57Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
- * (c) Copyright 2009 - 2011 INRIA - All rights reserved
+ * (c) Copyright 2009 - 2012 INRIA - All rights reserved
  * Contact: vincent.roca@inria.fr
  *
  * This software is governed by the CeCILL-C license under French law and
@@ -66,8 +66,7 @@ typedef struct of_2d_parity_cb
 	/* parity check matrix */
 	of_mod2sparse*	pchk_matrix;
 
-	/** Memory usage statistics, for this codec instance. */
-	of_memory_usage_stats_t		*stats;
+	/** usage statistics, for this codec instance. */
 	of_symbol_stats_op_t		*stats_xor;
 #ifdef OF_DEBUG
 	of_symbols_stats_t* stats_symbols;

@@ -1,4 +1,4 @@
-/* $Id: of_symbol.h 72 2012-04-13 13:27:26Z detchart $ */
+/* $Id: of_symbol.h 182 2014-07-15 09:27:51Z roca $ */
 /*
  * OpenFEC.org AL-FEC Library.
  * (c) Copyright 2009 - 2012 INRIA - All rights reserved
@@ -34,8 +34,6 @@
 #ifndef OF_SYMBOL
 #define OF_SYMBOL
 
-#include "../of_openfec_api.h"
-#include "../of_cb.h"
 
 #ifdef OF_USE_LINEAR_BINARY_CODES_UTILS
 
@@ -45,7 +43,6 @@ typedef struct of_symbol_stats_op
 	UINT32 nb_xor_for_IT;
 	UINT32 nb_xor_for_ML;
 } of_symbol_stats_op_t;
-
 
 
 /**
@@ -120,15 +117,15 @@ inline void	of_add_to_symbol	(void		*to,
  */
 #ifdef OF_DEBUG
 inline void	of_add_from_multiple_symbols	(void		*to,
-								 const void	**from,
-								 UINT32		from_size,
-								 UINT32		symbol_size,
-								 UINT32*);
+						 const void	**from,
+						 UINT32		from_size,
+						 UINT32		symbol_size,
+						 UINT32*);
 #else
 inline void	of_add_from_multiple_symbols	(void		*to,
-								 const void	**from,
-								 UINT32		from_size,
-								 UINT32		symbol_size);
+						 const void	**from,
+						 UINT32		from_size,
+						 UINT32		symbol_size);
 #endif
 
 /**
@@ -139,20 +136,20 @@ inline void	of_add_from_multiple_symbols	(void		*to,
  *
  * @param to		(IN/OUT) source symbols.
  * @param from		(IN) symbol added to the source symbol.
- * @param from_size (IN) number of "to" symbols
+ * @param to_size (IN) number of "to" symbols
  * @param symbol_size	(IN) size in byte
  */
 #ifdef OF_DEBUG
-inline void	of_add_to_multiple_symbols	(void		**to,
-											 const void	*from,
-											 UINT32		from_size,
-											 UINT32		symbol_size,
-											 UINT32*);
+inline void	of_add_to_multiple_symbols     (void		**to,
+						const void	*from,
+						UINT32		to_size,
+						UINT32		symbol_size,
+						UINT32*);
 #else
-inline void	of_add_to_multiple_symbols	(void		**to,
-											 const void	*from,
-											 UINT32		from_size,
-											 UINT32		symbol_size);
+inline void	of_add_to_multiple_symbols     (void		**to,
+						const void	*from,
+						UINT32		to_size,
+						UINT32		symbol_size);
 #endif
 
 #ifdef OF_DEBUG

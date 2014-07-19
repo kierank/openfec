@@ -1,4 +1,4 @@
-/* $Id: of_matrix_dense.h 49 2011-07-04 15:37:24Z detchart $ */
+/* $Id: of_matrix_dense.h 186 2014-07-16 07:17:53Z roca $ */
 
 /* Copyright (c) 1996, 2000, 2001 by Radford M. Neal
  *
@@ -32,33 +32,28 @@
 #ifndef MOD2DENSE_H /* { */
 #define MOD2DENSE_H
 
-#include "../../of_types.h"
-#include "../../of_mem.h"
 
 #ifdef OF_USE_LINEAR_BINARY_CODES_UTILS
 
 /* PACKING OF BITS INTO WORDS.  Bits are packed into 32-bit words, with
    the low-order bit coming first. */
 
-typedef UINT64 of_mod2word;	/* Data type that holds packed bits */
+typedef UINT32 of_mod2word;	/* Data type that holds packed bits */
 
 
-#define of_mod2_wordsize 64	/* Number of bits that fit in a of_mod2word. Can't
-be increased without changing intio module */
+#define of_mod2_wordsize 32	/* Number of bits that fit in a of_mod2word. Can't
+				   be increased without changing intio module */
 
 #define of_mod2_wordsize_shift 5	/* Amount to shift by to divide by wordsize */
 #define of_mod2_wordsize_mask 0x1f /* What to and with to produce mod wordsize */
 
 /* Extract the i'th bit of a of_mod2word. */
-
 #define of_mod2_getbit(w,i) (((w)>>(i))&1)
 
 /* Make a word like w, but with the i'th bit set to 1 (if it wasn't already). */
-
 #define of_mod2_setbit1(w,i) ((w)|(1<<(i)))
 
 /* Make a word like w, but with the i'th bit set to 0 (if it wasn't already). */
-
 #define of_mod2_setbit0(w,i) ((w)&(~(1<<(i))))
 
 
@@ -95,8 +90,8 @@ typedef struct
 
 /* PROCEDURES. */
 
-of_mod2dense *of_mod2dense_allocate (UINT32, UINT32, of_memory_usage_stats_t*);
-void of_mod2dense_free (of_mod2dense *, of_memory_usage_stats_t*);
+of_mod2dense *of_mod2dense_allocate (UINT32, UINT32);
+void of_mod2dense_free (of_mod2dense *);
 
 void of_mod2dense_clear (of_mod2dense *);
 void of_mod2dense_copy (of_mod2dense *, of_mod2dense *);
@@ -107,8 +102,8 @@ void of_mod2dense_print (FILE *, of_mod2dense *);
 UINT32  of_mod2dense_write (FILE *, of_mod2dense *);
 of_mod2dense *of_mod2dense_read (FILE *);
 
-UINT32  of_mod2dense_get (of_mod2dense *, UINT32, UINT32);
-void of_mod2dense_set (of_mod2dense *, UINT32, UINT32, UINT32);
+inline UINT32  of_mod2dense_get (of_mod2dense *, UINT32, UINT32);
+INT32   of_mod2dense_set (of_mod2dense *, UINT32, UINT32, UINT32);
 UINT32  of_mod2dense_flip (of_mod2dense *, UINT32, UINT32);
 
 void of_mod2dense_transpose (of_mod2dense *, of_mod2dense *);
@@ -124,10 +119,11 @@ UINT32 of_mod2dense_invert_selected (of_mod2dense *, of_mod2dense *, UINT32 *, U
 UINT32 of_mod2dense_triangularize (of_mod2dense *, of_mod2dense *);
 
 
-void of_mod2dense_print_bitmap (of_mod2dense *); //MC added
+void of_mod2dense_print_bitmap (of_mod2dense *, char *); //MC added
 void of_mod2dense_print_memory_info (of_mod2dense *); //MC added
 double of_mod2dense_density (of_mod2dense *); // MC added
 
+bool of_mod2dense_row_is_empty (of_mod2dense *m, UINT32	row); // VR added
 UINT32 of_mod2word_weight (of_mod2word); // MC added
 
 UINT32 of_mod2dense_row_weight (of_mod2dense *, UINT32); // MC added
@@ -136,10 +132,10 @@ UINT32 of_mod2dense_col_weight (of_mod2dense *, UINT32); // MC added
 
 void of_mod2dense_print_stats (FILE *, of_mod2dense *);// MC added
 
-void of_mod2dense_add_row (of_mod2dense *, UINT32 , UINT32); // MC added
-void of_mod2dense_add_row_ignore_first (of_mod2dense *, UINT32 , UINT32, UINT32); // MC added
+//void of_mod2dense_add_row (of_mod2dense *, UINT32 , UINT32); // MC added
+//void of_mod2dense_add_row_ignore_first (of_mod2dense *, UINT32 , UINT32, UINT32); // MC added
 
-void of_mod2dense_xor_rows(of_mod2dense *,UINT16,UINT16);
+void of_mod2dense_xor_rows(of_mod2dense *m, UINT16 from, UINT16 to);
 #endif //OF_USE_LINEAR_BINARY_CODES_UTILS
 
 #endif
